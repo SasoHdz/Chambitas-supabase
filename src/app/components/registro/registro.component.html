@@ -6,74 +6,50 @@
           <div class="card-body p-0">
             <div class="row g-0">
               <div class="col-lg-6">
+
                 <div class="p-5">
                   <h3 class="fw-normal mb-5" style="color: #4835d4;">Informacion general</h3>
 
-                  <!-- <div class="mb-4 pb-2">
-                    <select data-mdb-select-init>
-                      <option value="1">Title</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                    </select>
-                  </div> -->
+                  <div class="ol-md-6 mb-4 pb-2">
 
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev2">Nombre</label>
-                      </div>
-
+                    <div data-mdb-input-init class="form-outline mt-4">
+                      <label class="form-label" for="nombre">Nombre</label>
+                      <input type="text"  name="nombre" class="form-control form-control-lg" />
                     </div>
-                    <div class="col-md-6 mb-4 pb-2">
 
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev3">Apellido</label>
-                      </div>
-
+                    <div data-mdb-input-init class="form-outline mt-4">
+                      <label class="form-label" for="apaterno">Apellido Paterno</label>
+                      <input type="text"  class="form-control form-control-lg" name="apaterno" />
                     </div>
-                  </div>
 
-                  <!-- <div class="mb-4 pb-2">
-                    <select data-mdb-select-init>
-                      <option value="1">Position</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                    </select>
-                  </div> -->
-
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplev4">Oficio</label>
+                    <div data-mdb-input-init class="form-outline mt-4">
+                      <label class="form-label" for="amaterno">Apellido Materno</label>
+                      <input type="text" class="form-control form-control-lg" name="amaterno" />
                     </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
+                    <div data-mdb-input-init class="form-outline mt-4">
+                      <label class="form-label" for="oficio">Oficio</label>
 
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev5" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev5">Area especifica</label>
-                      </div>
-
-                    </div>
-                    <div class="col-md-6">
-
-                      <select data-mdb-select-init>
-                        <option value="1">Employees</option>
+                      <select class="form-select" aria-label="Default select example" name="oficio">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
-                        <option value="4">Four</option>
                       </select>
-
                     </div>
-                  </div>
 
+
+                    <div class="form-floating mt-5">
+                      <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="descripcion"></textarea>
+                      <label for="floatingTextarea2">Descripción</label>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="img" class="form-label">Imagen perfil</label>
+                      <input class="form-control" type="file" name="img">
+                    </div>
+
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6 bg-indigo text-white">
@@ -82,32 +58,28 @@
 
                   <div class="mb-4 pb-2">
                     <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea2">Street + Nr</label>
+                      <input type="tel" id="numTel" name="numTel" class="form-control form-control-lg"
+                             pattern="[0-9]*" inputmode="numeric" title="Por favor, introduzca sólo números.">
+                      <label class="form-label" for="numTel">Número Teléfono</label>
                     </div>
                   </div>
 
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea3" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea3">Informacion adicional</label>
-                    </div>
-                  </div>
+
 
                   <div class="row">
                     <div class="col-md-5 mb-4 pb-2">
 
                       <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea4" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea4">C.P.</label>
+                        <input type="text" class="form-control form-control-lg"  name="cp"/>
+                        <label class="form-label" for="cp">C.P.</label>
                       </div>
 
                     </div>
                     <div class="col-md-7 mb-4 pb-2">
 
                       <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea5" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea5">Colonia</label>
+                        <input type="text" name="municipio" class="form-control form-control-lg" />
+                        <label class="form-label" for="municipio">Municipio</label>
                       </div>
 
                     </div>
@@ -115,36 +87,29 @@
 
                   <div class="mb-4 pb-2">
                     <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea6" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea6">Ciudad</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea7" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea7">Codigo de area</label>
-                      </div>
-
-                    </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea8" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea8">Numero de telefono</label>
-                      </div>
-
+                      <input type="text" class="form-control form-control-lg" name="ciudad"/>
+                      <label class="form-label" for="ciudad">Ciudad</label>
                     </div>
                   </div>
 
                   <div class="mb-4">
                     <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea9" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea9">Correo</label>
+                      <input type="email"  class="form-control form-control-lg" name="email" />
+                      <label class="form-label" for="email">Correo</label>
                     </div>
                   </div>
+
+                  <div class="mb-4">
+                    <div data-mdb-input-init class="form-outline form-white">
+                      <input type="password" class="form-control" name="password" aria-describedby="passwordHelpBlock">
+                      <label for="password" class="form-label">Password</label>
+                      <div id="passwordHelpBlock" class="form-text">
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                      </div>
+                    </div>
+                  </div>
+
+
 
                   <div class="form-check d-flex justify-content-start mb-4 pb-3">
                     <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
@@ -155,6 +120,9 @@
                   </div>
 
                   <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg"
+                  data-mdb-ripple-color="dark">Cancelar</button>
+
+                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg ms-5"
                     data-mdb-ripple-color="dark">Register</button>
 
                 </div>
