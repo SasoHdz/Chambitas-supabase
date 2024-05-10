@@ -13,3 +13,11 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+.logo {
+    position: absolute;
+    top: 20px; /* Ajusta la posición vertical según sea necesario */
+    left: 20px; /* Ajusta la posición horizontal según sea necesario */
+    width: 100px; /* Ajusta el ancho según sea necesario */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+  
