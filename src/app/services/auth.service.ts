@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor() {
     this.s_client = createClient(environment.apiUrl, environment.apiKey);
+
   }
 
   signUp(email: string, password: string){
@@ -20,4 +21,34 @@ export class AuthService {
   signIn(email: string, password: string){
     return this.s_client.auth.signInWithPassword({email, password});
   }
+
+  async getCiudades() {
+    let { data, error  } = await this.s_client
+      .from('CIUDADES')
+      .select('nombre');
+
+    if (error) {
+      console.error('Error fetching cities', error);
+      return { error };
+    }
+
+    return { data };
+  }
+
+  async getOficios() {
+    let { data, error  } = await this.s_client
+    .from('OFICIOS')
+    .select('*');
+
+    if (error) {
+      console.error('Error fetching cities', error);
+      return { error };
+    }
+
+    return { data };
+  }
+
+
+
+
 }
