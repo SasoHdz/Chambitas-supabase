@@ -35,6 +35,19 @@ export class AuthService {
     return { data };
   }
 
+  async getEstados() {
+    let { data, error  } = await this.s_client
+      .from('ESTADOS')
+      .select('*');
+
+    if (error) {
+      console.error('Error fetching cities', error);
+      return { error };
+    }
+
+    return { data };
+  }
+
   async getOficios() {
     let { data, error  } = await this.s_client
     .from('OFICIOS')
@@ -46,6 +59,22 @@ export class AuthService {
     }
 
     return { data };
+  }
+
+  async getMunicipio(estado:number){
+    let { data: MUNICIPIOS, error } = await this.s_client
+  .from('MUNICIPIOS')
+  .select("*")
+
+  // Filters
+  .eq('estado', estado)
+
+  if (error) {
+    console.error('Error fetching cities', error);
+    return { error };
+  }
+
+  return {MUNICIPIOS};
   }
 
 
