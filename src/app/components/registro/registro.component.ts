@@ -1,5 +1,6 @@
 import { Component , inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
@@ -7,15 +8,22 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
   email:string = '';
   pass:string = '';
+  estado:any = 0;
+  mun:number = 0;
+
 
   ciudades: any[] = [];
+  estados: any[] = [];
+  municipios: any[] = [];
+
+
   oficios: any[] = [];
 
 
@@ -31,7 +39,7 @@ export class RegistroComponent {
     numTel: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     cp: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
     municipio: ['', [Validators.required, Validators.minLength(5)]],
-    ciudad: ['', Validators.required],
+    estado: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).+$/)]]
   });
@@ -50,14 +58,24 @@ export class RegistroComponent {
   }
 
   ngOnInit() {
-    this.loadCiudades();
+    this.loadEstados();
     this.loadOficios();
+    this.loadCiudades();
+
   }
 
   async loadCiudades() {
     const result = await this.authService.getCiudades();
     if (!result.error) {
       this.ciudades = result.data;
+    }
+  }
+
+  async loadEstados() {
+    const result = await this.authService.getEstados();
+    if (!result.error) {
+      this.estados = result.data;
+      console.log(this.estados)
     }
   }
 
@@ -68,6 +86,24 @@ export class RegistroComponent {
     }
   }
 
+
+
+  async loadMunicipio(est:number) {
+    const result = await this.authService.getMunicipio(est);
+    if (!result.error) {
+      this.municipios = result.MUNICIPIOS;
+      console.log(this.municipios)
+    }
+  }
+
+
+  findMun(){
+    console.log(this.form.value.estado)
+    let estadoSelect: number= parseInt(this.form.value.estado);
+    if(estadoSelect!=0){
+      this.loadMunicipio(estadoSelect);
+    }
+  }
 
 
 }

@@ -5,6 +5,8 @@ import CrudComponent from './components/crud/crud.component';
 import { LoginComponent }  from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { OfertatrabajoComponent } from './components/ofertatrabajo/ofertatrabajo.component';
+import { LayoutComponent } from './components/layout/layout.component';
+
 export const routes: Routes = [
     {path:'', component:LoginComponent},
     {path:'auth', component:AuthComponent},
@@ -12,5 +14,7 @@ export const routes: Routes = [
     {path:'login', component:LoginComponent},
     {path:'registro', component:RegistroComponent},
     {path:'oferta-trabajo', component:OfertatrabajoComponent},
+    {path:'layout', component:LayoutComponent},
+
     {path:'', redirectTo:'', pathMatch:'full'}
 ];
