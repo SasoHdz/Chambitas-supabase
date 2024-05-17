@@ -1,192 +1,351 @@
-<div class="mt-5 container w-50">
-  <form (ngSubmit)="submitForm()" #registroForm="ngForm">
-    <!-- Nombre de trabajo -->
-    <div class="mb-3">
-      <label for="nombreTrabajo" class="form-label">Nombre del trabajo</label>
-      <input
-        type="text"
-        class="form-control"
-        id="nombreTrabajo"
-        name="nombreTrabajo"
-        [(ngModel)]="registro.nombreTrabajo"
-        required
-        minlength="10"
-        maxlength="60"
-        [ngClass]="{'is-invalid': registroForm.controls['nombreTrabajo'].invalid && registroForm.controls['nombreTrabajo'].touched}"
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Registro</title>
 
-      />
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['required']"
-      >
-        El nombre del trabajo es obligatorio.
-      </div>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['minlength']"
-      >
-        El nombre del trabajo debe tener al menos 10 caracteres.
-      </div>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['maxlength']"
-      >
-        El nombre del trabajo no puede tener más de 60 caracteres.
-      </div>
-    </div>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #06645d, #023939);
+        color: #fff;
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    <!-- Descripción del trabajo -->
-    <div class="mb-3">
-      <label for="descripcionTrabajo" class="form-label"
-        >Descripción del trabajo</label
-      >
-      <textarea
-        class="form-control"
-        id="descripcionTrabajo"
-        name="descripcionTrabajo"
-        [(ngModel)]="registro.descripcionTrabajo"
-        required
-        minlength="100"
-        maxlength="500"
-        [ngClass]="{'is-invalid': registroForm.controls['descripcionTrabajo'].invalid && registroForm.controls['descripcionTrabajo'].touched}"
+      .container {
+        max-width: 700px;
+        width: 100%;
+      }
 
-      ></textarea>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['required']"
-      >
-        La descripción del trabajo es obligatoria.
-      </div>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['minlength']"
-      >
-        La descripción del trabajo debe tener al menos 100 caracteres.
-      </div>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['maxlength']"
-      >
-        La descripción del trabajo no puede tener más de 500 caracteres.
-      </div>
-    </div>
+      .form-wrapper {
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        color: #03312e;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
 
-    <!-- Actividades a realizar -->
-    <div class="mb-3">
-      <label for="actividades" class="form-label">Actividades a realizar</label>
-      <textarea
-        class="form-control"
-        id="actividades"
-        name="actividades"
-        [(ngModel)]="registro.actividades"
-        required
-        [ngClass]="{'is-invalid': registroForm.controls['actividades'].invalid && registroForm.controls['actividades'].touched}"
+      .form-wrapper:hover {
+        transform: scale(1.02);
+        background: rgba(255, 255, 255, 0.2);
+      }
 
-      ></textarea>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['actividades']?.errors?.['required']"
-      >
-        Las actividades a realizar son obligatorias.
-      </div>
-    </div>
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
 
-    <div class="row gap-3">
-      <div class="col-md-5">
-        <!-- Pago -->
-        <div class="mb-3">
-          <label for="pago" class="form-label">Pago</label>
-          <input
-            type="number"
-            class="form-control"
-            id="pago"
-            name="pago"
-            [(ngModel)]="registro.pago"
-            required
-        [ngClass]="{'is-invalid': registroForm.controls['pago'].invalid && registroForm.controls['pago'].touched}"
+      .logo {
+        max-width: 150px;
+      }
 
-          />
-          <div
-            class="invalid-feedback"
-            *ngIf="registroForm.controls['pago']?.errors?.['required']"
-          >
-            El pago es obligatorio.
-          </div>
+      .form-control,
+      .form-select {
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-radius: 0.5rem;
+        border: 2px solid #03312e;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        color: #03312e;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #03312e;
+        box-shadow: 0 0 8px rgba(3, 49, 46, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-primary {
+        background-color: #00b9ae;
+        border-color: #00b9ae;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #037171;
+        border-color: #037171;
+        transform: scale(1.05);
+      }
+
+      .btn-danger {
+        background-color: #03312e;
+        border-color: #03312e;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .btn-danger:hover {
+        background-color: #037171;
+        border-color: #037171;
+        transform: scale(1.05);
+      }
+
+      h2 {
+        color: #03312e;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .invalid-feedback {
+        color: #e3342f;
+      }
+
+      .form-group label {
+        font-weight: bold;
+        color: #03312e;
+      }
+
+      .list-group-item {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #03312e;
+        border: 1px solid #00b9ae;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="form-wrapper p-5 mx-auto shadow rounded">
+        <div class="logo-container text-center mb-4">
+          <img src="logo.png" alt="Logo" class="logo" />
         </div>
-      </div>
-      <div class="col-md-6">
-        <!-- Tipo de contrato -->
-        <div class="mb-3">
-          <label for="tipoContrato" class="form-label">Tipo de contrato</label>
-          <select
-            class="form-select"
-            id="tipoContrato"
-            name="tipoContrato"
-            [(ngModel)]="registro.tipoContrato"
-            required
-        [ngClass]="{'is-invalid': registroForm.controls['tipoContrato'].invalid && registroForm.controls['tipoContrato'].touched}"
+        <form (ngSubmit)="submitForm()" #registroForm="ngForm">
+          <h2 class="text-center mb-4">Formulario de Registro</h2>
 
-          >
-            <option value="" disabled selected>
-              Selecciona un tipo de contrato
-            </option>
-            <option value="dia">Día</option>
-            <option value="horas">Horas</option>
-            <option value="honorarios">Honorarios</option>
-            <option value="mes">Mes</option>
-            <option value="otro">Otro</option>
-          </select>
-          <div
-            class="invalid-feedback"
-            *ngIf="registroForm.controls['tipoContrato']?.errors?.['required']"
-          >
-            El tipo de contrato es obligatorio.
+          <!-- Nombre de trabajo -->
+          <div class="form-group">
+            <label for="nombreTrabajo">Nombre del trabajo</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreTrabajo"
+              name="nombreTrabajo"
+              [(ngModel)]="registro.nombreTrabajo"
+              required
+              minlength="10"
+              maxlength="60"
+              [ngClass]="{
+                'is-invalid':
+                  registroForm.controls['nombreTrabajo'].invalid &&
+                  registroForm.controls['nombreTrabajo'].touched
+              }"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['required']"
+            >
+              El nombre del trabajo es obligatorio.
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['minlength']"
+            >
+              El nombre del trabajo debe tener al menos 10 caracteres.
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['nombreTrabajo']?.errors?.['maxlength']"
+            >
+              El nombre del trabajo no puede tener más de 60 caracteres.
+            </div>
           </div>
-        </div>
+
+          <!-- Descripción del trabajo -->
+          <div class="form-group">
+            <label for="descripcionTrabajo">Descripción del trabajo</label>
+            <textarea
+              class="form-control"
+              id="descripcionTrabajo"
+              name="descripcionTrabajo"
+              [(ngModel)]="registro.descripcionTrabajo"
+              required
+              minlength="100"
+              maxlength="500"
+              [ngClass]="{
+                'is-invalid':
+                  registroForm.controls['descripcionTrabajo'].invalid &&
+                  registroForm.controls['descripcionTrabajo'].touched
+              }"
+            ></textarea>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['required']"
+            >
+              La descripción del trabajo es obligatoria.
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['minlength']"
+            >
+              La descripción del trabajo debe tener al menos 100 caracteres.
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['descripcionTrabajo']?.errors?.['maxlength']"
+            >
+              La descripción del trabajo no puede tener más de 500 caracteres.
+            </div>
+          </div>
+
+          <!-- Actividades a realizar -->
+          <div class="form-group">
+            <label for="actividades">Actividades a realizar</label>
+            <textarea
+              class="form-control"
+              id="actividades"
+              name="actividades"
+              [(ngModel)]="registro.actividades"
+              required
+              [ngClass]="{
+                'is-invalid':
+                  registroForm.controls['actividades'].invalid &&
+                  registroForm.controls['actividades'].touched
+              }"
+            ></textarea>
+            <div
+              class="invalid-feedback"
+              *ngIf="registroForm.controls['actividades']?.errors?.['required']"
+            >
+              Las actividades a realizar son obligatorias.
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Pago -->
+              <div class="form-group">
+                <label for="pago">Pago</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="pago"
+                  name="pago"
+                  [(ngModel)]="registro.pago"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      registroForm.controls['pago'].invalid &&
+                      registroForm.controls['pago'].touched
+                  }"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="registroForm.controls['pago']?.errors?.['required']"
+                >
+                  El pago es obligatorio.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Tipo de contrato -->
+              <div class="form-group">
+                <label for="tipoContrato">Tipo de contrato</label>
+                <select
+                  class="form-control"
+                  id="tipoContrato"
+                  name="tipoContrato"
+                  [(ngModel)]="registro.tipoContrato"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      registroForm.controls['tipoContrato'].invalid &&
+                      registroForm.controls['tipoContrato'].touched
+                  }"
+                >
+                  <option value="" disabled selected>
+                    Selecciona un tipo de contrato
+                  </option>
+                  <option value="dia">Día</option>
+                  <option value="horas">Horas</option>
+                  <option value="honorarios">Honorarios</option>
+                  <option value="mes">Mes</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="registroForm.controls['tipoContrato']?.errors?.['required']"
+                >
+                  El tipo de contrato es obligatorio.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Oficios ideales para trabajo -->
+              <div class="form-group">
+                <label for="oficios">Oficios ideales para trabajo</label>
+                <select
+                  class="form-control"
+                  id="oficios"
+                  name="oficios"
+                  [(ngModel)]="registro.oficios"
+                  required
+                  [ngClass]="{
+                    'is-invalid':
+                      registroForm.controls['oficios'].invalid &&
+                      registroForm.controls['oficios'].touched
+                  }"
+                  (change)="onChangeOficio($event)"
+                >
+                  <option value="" disabled selected>
+                    Selecciona un oficio
+                  </option>
+                  <option value="oficio1">Oficio 1</option>
+                  <option value="oficio2">Oficio 2</option>
+                  <option value="oficio3">Oficio 3</option>
+                </select>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="registroForm.controls['oficios']?.errors?.['required']"
+                >
+                  Los oficios ideales para el trabajo son obligatorios.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group">
+                <li *ngFor="let o of oficios" class="list-group-item">
+                  {{ o }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Botón de enviar -->
+          <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+            <button type="button" class="btn btn-danger btn-lg">
+              Cancelar
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
-    <div class="row gap-3">
-      <div class="col-md-5">
-        <!-- Oficios ideales para trabajo -->
-    <div class="mb-3">
-      <label for="oficios" class="form-label"
-        >Oficios ideales para trabajo</label
-      >
-      <select
-        class="form-select"
-        id="oficios"
-        name="oficios"
-        [(ngModel)]="registro.oficios"
-        required
-        [ngClass]="{'is-invalid': registroForm.controls['oficios'].invalid && registroForm.controls['oficios'].touched}"
-        (change)="onChangeOficio($event)"
-
-      >
-        <option value="" disabled selected>Selecciona un oficio</option>
-        <option value="oficio1">Oficio 1</option>
-        <option value="oficio2">Oficio 2</option>
-        <option value="oficio3">Oficio 3</option>
-      </select>
-      <div
-        class="invalid-feedback"
-        *ngIf="registroForm.controls['oficios']?.errors?.['required']"
-      >
-        Los oficios ideales para el trabajo son obligatorios.
-      </div>
-    </div>
-      </div>
-      <div class="col-md-6">
-        <ul class="list-group">
-          <li *ngFor="let o of oficios" class="list-group-item">{{o}}</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Botón de enviar -->
-    <div class="d-flex justify-content-evenly mt-2">
-      <button type="submit" class="btn btn-primary btn-lg p-2">Enviar</button>
-      <button type="" class="btn btn-danger btn-lg p-2">Cancelar</button>
-    </div>
-  </form>
-</div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
