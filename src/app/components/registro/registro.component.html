@@ -106,6 +106,30 @@
                       </div>
                     </div>
 
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="amaterno"
+                        >Fecha Nacimiento</label
+                      >
+                      <input
+                        type="date"
+                        id="fechaNac"
+                        formControlName="fechaNac"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('fechaNac').touched &&
+                          form.get('fechaNac').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('fechaNac').hasError('required')">
+                          La fecha de nacimiento es requerida
+                        </div>
+
+                      </div>
+                    </div>
+
                     <!-- Oficio -->
                     <div class="form-outline mt-4">
                       <label class="form-label" for="oficio">Oficio</label>
@@ -271,6 +295,8 @@
     class="form-select"
     aria-label="Default select example"
     name="municipio"
+    formControlName="municipio"
+
   >
     <option selected>Selecciona ....</option>
     <option *ngFor="let mun of municipios" [value]="mun.id_mun">

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { FormBuilder, Validators, ReactiveFormsModule} from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../models/usuario';
+
 
 @Component({
   selector: 'app-registro',
@@ -40,17 +42,41 @@ export class RegistroComponent {
     cp: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
     municipio: ['', [Validators.required, Validators.minLength(5)]],
     estado: ['', Validators.required],
+    fechaNac: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z]).+$/)]]
   });
 
 
   OnSubmit(){
-    console.log(this.email, this.pass);
+    console.log("SUBMIT")
+    console.log(this.form.value.email, this.form.value.password);
 
-    this.authService.signUp(this.email, this.pass)
+    this.authService.signUp(this.form.value.email, this.form.value.password)
       .then((resp: any) => {
         console.log(resp);
+
+        if(resp.data.user != null){
+          let newUser:Usuario = {
+            nombre: this.form.value.nombre,
+            apaterno: this.form.value.apaterno,
+            amaterno: this.form.value.amaterno,
+            descripcion: this.form.value.descripcion,
+            estado: parseInt(this.form.value.estado),
+            municipio: parseInt(this.form.value.municipio),
+            cp: this.form.value.cp,
+            telefono: this.form.value.numTel,
+            usuario: resp.data.user.id,
+            tipoUsuario: 1,
+            fechaNac: this.form.value.fechaNac
+          };
+
+          this.authService.setUser(newUser).then(resp => console.log(resp));
+        }
+        else {
+          alert("Error al registrarse");
+        }
+
       })
       .catch((err)=>{
         console.log(err);
