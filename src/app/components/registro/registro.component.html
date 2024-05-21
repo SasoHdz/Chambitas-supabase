@@ -1,167 +1,422 @@
-<section class="h-auto h-custom gradient-custom-2" style="height: 100% !important;">
+<section
+  class="h-auto h-custom gradient-custom-2"
+  style="height: 100% !important"
+>
   <div class="container py-5 h-100">
     <!-- <img src="https://media.istockphoto.com/id/1433163893/vector/repair-tool-and-house-symbol.jpg?s=612x612&w=0&k=20&c=ma5bT49rLmiN1x2z9Aq9mnBEZyVmc8wcyyxZ14hGhEI=" class="logo" alt="En este apartado se deberia ver el logo"> -->
 
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
-        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+        <div
+          class="card card-registration card-registration-2"
+          style="border-radius: 15px"
+        >
           <div class="card-body p-0">
-            <div class="row g-0">
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <h3 class="fw-normal mb-5" style="color: #4835d4;">Informacion general</h3>
+            <form [formGroup]="form" (ngSubmit)="OnSubmit()" novalidate>
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <h3 class="fw-normal mb-5" style="color: #4835d4">
+                      Informacion general
+                    </h3>
 
-                  <!-- <div class="mb-4 pb-2">
-                    <select data-mdb-select-init>
-                      <option value="1">Title</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                    </select>
-                  </div> -->
-
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev2">Nombre</label>
+                    <!-- Nombre -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="nombre">Nombre</label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        formControlName="nombre"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('nombre').touched &&
+                          form.get('nombre').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('nombre').hasError('required')">
+                          Nombre es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('nombre').hasError('minlength')">
+                          Nombre debe tener al menos 5 caracteres.
+                        </div>
+                        <div *ngIf="form.get('nombre').hasError('pattern')">
+                          Nombre solo debe contener letras.
+                        </div>
                       </div>
-
                     </div>
-                    <div class="col-md-6 mb-4 pb-2">
 
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev3" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev3">Apellido</label>
+                    <!-- Apellido Paterno -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="apaterno"
+                        >Apellido Paterno</label
+                      >
+                      <input
+                        type="text"
+                        id="apaterno"
+                        formControlName="apaterno"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('apaterno').touched &&
+                          form.get('apaterno').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('apaterno').hasError('required')">
+                          Apellido Paterno es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('apaterno').hasError('minlength')">
+                          Apellido Paterno debe tener al menos 5 caracteres.
+                        </div>
+                        <div *ngIf="form.get('apaterno').hasError('pattern')">
+                          Apellido Paterno solo debe contener letras.
+                        </div>
                       </div>
-
                     </div>
-                  </div>
 
-                  <!-- <div class="mb-4 pb-2">
-                    <select data-mdb-select-init>
-                      <option value="1">Position</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                    </select>
-                  </div> -->
-
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="form3Examplev4" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplev4">Oficio</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
-
-                      <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form3Examplev5" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplev5">Area especifica</label>
+                    <!-- Apellido Materno -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="amaterno"
+                        >Apellido Materno</label
+                      >
+                      <input
+                        type="text"
+                        id="amaterno"
+                        formControlName="amaterno"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('amaterno').touched &&
+                          form.get('amaterno').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('amaterno').hasError('required')">
+                          Apellido Materno es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('amaterno').hasError('minlength')">
+                          Apellido Materno debe tener al menos 5 caracteres.
+                        </div>
+                        <div *ngIf="form.get('amaterno').hasError('pattern')">
+                          Apellido Materno solo debe contener letras.
+                        </div>
                       </div>
-
                     </div>
-                    <div class="col-md-6">
 
-                      <select data-mdb-select-init>
-                        <option value="1">Employees</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="amaterno"
+                        >Fecha Nacimiento</label
+                      >
+                      <input
+                        type="date"
+                        id="fechaNac"
+                        formControlName="fechaNac"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('fechaNac').touched &&
+                          form.get('fechaNac').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('fechaNac').hasError('required')">
+                          La fecha de nacimiento es requerida
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!-- Oficio -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="oficio">Oficio</label>
+                      <select
+                        class="form-select"
+                        id="oficio"
+                        formControlName="oficio"
+                        aria-label="Default select example"
+                      >
+                        <option value="" disabled selected>
+                          Selecciona ....
+                        </option>
+                        <option
+                          *ngFor="let oficio of oficios"
+                          [value]="oficio.id_oficio"
+                        >
+                          {{ oficio.nombre }}
+                        </option>
                       </select>
+                      <div
+                        *ngIf="
+                          form.get('oficio').touched &&
+                          form.get('oficio').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('oficio').hasError('required')">
+                          Debe seleccionar un oficio.
+                        </div>
+                      </div>
+                    </div>
 
+                    <!-- Descripción -->
+                    <div class="form-floating mt-5">
+                      <textarea
+                        class="form-control"
+                        id="floatingTextarea2"
+                        formControlName="descripcion"
+                        placeholder="Leave a comment here"
+                        style="height: 100px"
+                      ></textarea>
+                      <label for="floatingTextarea2">Descripción</label>
+                      <div
+                        *ngIf="
+                          form.get('descripcion').touched &&
+                          form.get('descripcion').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div
+                          *ngIf="form.get('descripcion').hasError('required')"
+                        >
+                          Descripción es obligatoria.
+                        </div>
+                        <div
+                          *ngIf="form.get('descripcion').hasError('minlength')"
+                        >
+                          Descripción debe tener al menos 30 caracteres.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Imagen perfil -->
+                    <div class="mb-3">
+                      <label for="imgProfile" class="form-label"
+                        >Imagen de perfil</label
+                      >
+                      <input class="form-control" type="file" id="imgProfile" />
                     </div>
                   </div>
+                </div>
 
+                <div class="col-lg-6 bg-indigo text-white">
+                  <div class="p-5 fw-normal">
+                    <h3 class="fw-normal mb-5">Detalles de contacto</h3>
+
+                    <!-- Número de Teléfono -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="numTel"
+                        >Número de Teléfono</label
+                      >
+                      <input
+                        type="text"
+                        id="numTel"
+                        formControlName="numTel"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('numTel').touched &&
+                          form.get('numTel').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('numTel').hasError('required')">
+                          Número de teléfono es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('numTel').hasError('pattern')">
+                          Número de teléfono debe ser de 10 dígitos.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Código Postal -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="cp">Código Postal</label>
+                      <input
+                        type="text"
+                        id="cp"
+                        formControlName="cp"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="form.get('cp').touched && form.get('cp').errors"
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('cp').hasError('required')">
+                          Código Postal es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('cp').hasError('pattern')">
+                          Código Postal debe ser de 5 dígitos.
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                   <!-- Ciudad -->
+<div class="form-outline mt-4">
+  <label class="form-label" for="estado">Estado</label>
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    name="estado"
+    (change)="findMun()"
+    [(ngModel)]="estado"
+    formControlName="estado"
+  >
+    <option [ngValue]="0"  >
+      Selecciona ....
+    </option>
+    <option *ngFor="let est of estados" [ngValue]="est.id_est">
+      {{ est.nombre }}
+    </option>
+  </select>
+  <div
+    *ngIf="
+      form.get('estado').touched &&
+      form.get('estado').errors
+    "
+    class="alert alert-danger mt-2"
+  >
+    <div *ngIf="form.get('estado').hasError('required')">
+      Ciudad es obligatoria.
+    </div>
+  </div>
+</div>
+
+<!-- Ciudad -->
+<div class="form-outline mt-4">
+  <label class="form-label" for="municipio">Municipio</label>
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    name="municipio"
+    formControlName="municipio"
+
+  >
+    <option selected>Selecciona ....</option>
+    <option *ngFor="let mun of municipios" [value]="mun.id_mun">
+      {{ mun.nombre }}
+    </option>
+  </select>
+  <div
+    *ngIf="
+      form.get('municipio').touched &&
+      form.get('municipio').errors
+    "
+    class="alert alert-danger mt-2"
+  >
+    <div *ngIf="form.get('municipio').hasError('required')">
+      Ciudad es obligatoria.
+    </div>
+  </div>
+</div>
+
+                    <!-- Email -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('email').touched && form.get('email').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('email').hasError('required')">
+                          Email es obligatorio.
+                        </div>
+                        <div *ngIf="form.get('email').hasError('email')">
+                          Debe ser un email válido.
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="form-outline mt-4">
+                      <label class="form-label" for="password"
+                        >Contraseña</label
+                      >
+                      <input
+                        type="password"
+                        id="password"
+                        formControlName="password"
+                        class="form-control form-control-lg"
+                      />
+                      <div
+                        *ngIf="
+                          form.get('password').touched &&
+                          form.get('password').errors
+                        "
+                        class="alert alert-danger mt-2"
+                      >
+                        <div *ngIf="form.get('password').hasError('required')">
+                          Contraseña es obligatoria.
+                        </div>
+                        <div *ngIf="form.get('password').hasError('minlength')">
+                          La contraseña debe tener al menos 8 caracteres.
+                        </div>
+                        <div *ngIf="form.get('password').hasError('pattern')">
+                          La contraseña debe incluir al menos una letra
+                          mayúscula y una minúscula.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="form-check d-flex justify-content-start mb-4 pb-3"
+                    >
+                      <input
+                        class="form-check-input me-3"
+                        type="checkbox"
+                        value=""
+                        id="form2Example3c"
+                      />
+                      <label
+                        class="form-check-label text-white"
+                        for="form2Example3"
+                      >
+                        I do accept the
+                        <a href="#!" class="text-white"
+                          ><u>Terminos y condiciones</u></a
+                        >
+                        of your site.
+                      </label>
+                    </div>
+
+                    <button
+                      type="button"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-light btn-lg"
+                      data-mdb-ripple-color="dark"
+                    >
+                      Cancelar
+                    </button>
+
+                    <button
+                      type="submit"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-light btn-lg ms-5"
+                      data-mdb-ripple-color="dark"
+                    >
+                      Register
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div class="col-lg-6 bg-indigo text-white">
-                <div class="p-5">
-                  <h3 class="fw-normal mb-5">Contact Details</h3>
-
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea2">Street + Nr</label>
-                    </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea3" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea3">Informacion adicional</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea4" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea4">C.P.</label>
-                      </div>
-
-                    </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea5" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea5">Colonia</label>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea6" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea6">Ciudad</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea7" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea7">Codigo de area</label>
-                      </div>
-
-                    </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
-                      <div data-mdb-input-init class="form-outline form-white">
-                        <input type="text" id="form3Examplea8" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Examplea8">Numero de telefono</label>
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div data-mdb-input-init class="form-outline form-white">
-                      <input type="text" id="form3Examplea9" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Examplea9">Correo</label>
-                    </div>
-                  </div>
-
-                  <div class="form-check d-flex justify-content-start mb-4 pb-3">
-                    <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
-                    <label class="form-check-label text-white" for="form2Example3">
-                      I do accept the <a href="#!" class="text-white"><u>Terminos y condiciones</u></a> of your
-                      site.
-                    </label>
-                  </div>
-
-                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg"
-                    data-mdb-ripple-color="dark">Register</button>
-
-                </div>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
