@@ -71,7 +71,12 @@ export class RegistroComponent {
             fechaNac: this.form.value.fechaNac
           };
 
-          this.authService.setUser(newUser).then(resp => console.log(resp));
+          this.authService.setUser(newUser).then((resp: any) => {
+            console.log(resp.data.user.id_usuario)
+            //Registro de oficio de usuario
+            this.authService.setOficio(parseInt(this.form.value.oficio), resp.data.user.id_usuario).then(resp=>console.log(resp))
+
+          });
         }
         else {
           alert("Error al registrarse");

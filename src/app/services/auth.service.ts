@@ -100,4 +100,25 @@ export class AuthService {
 
     return { data };
   }
+
+  async setOficio(oficio: number, usuario:number) {
+
+
+    const { data, error } = await this.s_client
+    .from('OFICIOSXUSUARIO')
+    .insert([
+      { id_oficio: oficio, id_usuario: usuario },
+    ])
+    .select()
+
+    if (error) {
+      console.error('Error al insertar usuario', error);
+      return { error };
+    }
+
+    return { data };
+  }
+
+
+
 }
