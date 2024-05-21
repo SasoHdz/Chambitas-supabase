@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Botón de Notificaciones</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.1/tippy.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #00b9ae, #037171);
+        color: #fff;
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .notification-button {
+        background-color: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        color: #03312e;
+        border: 2px solid #00b9ae;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: background-color 0.3s ease, border-color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .notification-button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-color: #037171;
+        transform: scale(1.05);
+      }
+
+      .notification-button img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .notification-count {
+        background-color: #e3342f;
+        color: #fff;
+        border-radius: 50%;
+        padding: 0.3em 0.6em;
+        font-size: 12px;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        border: 2px solid #fff;
+        display: none; /* Inicialmente oculto */
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      class="notification-button"
+      onclick="incrementNotifications()"
+      data-tippy-content="0 notificaciones sin visualizar"
+    >
+      <img src="img/boton-de-notificaciones.png" alt="Campanita" />
+      <span class="notification-count" id="notification-count">0</span>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.1/tippy-bundle.umd.min.js"></script>
+    <script>
+      let notificationCount = 0;
+
+      function incrementNotifications() {
+        notificationCount++;
+        const notificationCountElement =
+          document.getElementById("notification-count");
+        notificationCountElement.textContent = notificationCount;
+        if (notificationCount > 0) {
+          notificationCountElement.style.display = "inline";
+          tippyInstance.setContent(
+            notificationCount + " notificaciones sin visualizar"
+          );
+        }
+      }
+      const tippyInstance = tippy(".notification-button", {
+        content: "0 notificaciones sin visualizar",
+        placement: "bottom",
+        arrow: true,
+        animation: "shift-away",
+      });
+
+      setInterval(incrementNotifications, 5000);
+    </script>
+  </body>
+</html>
