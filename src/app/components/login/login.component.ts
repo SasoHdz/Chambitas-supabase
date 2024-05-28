@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Swal} from 'sweetalert2/dist/sweetalert2';
 import { ModalSelectUserComponent } from '../modal-select-user/modal-select-user.component';
 
@@ -35,6 +35,10 @@ export class LoginComponent {
         console.error('Login error:', error);
         alert( error.error_description || 'Failed to log in.');
       });
+  }
+
+  registro(){
+    this.router.navigate(['/registro']);  // Cambia '/home' por la ruta a la que deseas dirigir
   }
 
   // selectUser(){

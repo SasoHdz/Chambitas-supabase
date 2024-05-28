@@ -1,56 +1,68 @@
-<body>
+<div class="layout">
   <header>
-    <div class="container">
-      <nav>
-        <a href="#" class="logo">CHAMBITAS</a>
-        <ul>
-          <li><a href="#">CHAMBAS</a></li>
-          <li><a href="#">Servicios para distribuidores</a></li>
-          <li><a href="#">Contacta</a></li>
-        </ul>
-        <div class="search-bar">
-          <input type="text" placeholder="Buscar">
-          <button type="button">
-            <i class="fas fa-search"></i>
-          </button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">CHAMBITAS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Crear oferta</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Oficios
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+
   </header>
-
   <main>
-    <div class="container-middle"> </div>
-    <section class="banner">
+    <ng-content></ng-content>
+  </main>
+  <footer>
+    <footer class="footer">
       <div class="container">
-        <h1>Te ayudamos en los que necesitas!!!</h1>
-        <p>Todo el trabajo es para ayudar</p>
-      </div>
-    </section>
-
-    <section class="products">
-      <div class="container">
-        <h2>Categorías</h2>
-        <ul class="categories">
-          <li><a href="#">Albañileria</a></li>
-          <li><a href="#">Mecanica</a></li>
-          <li><a href="#">Plomeria</a></li>
-          <li><a href="#">Mas...</a></li>
-        </ul>
-
-        <div class="products-list">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Sobre Nosotros</h5>
+            <p>Información sobre la empresa.</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Contacto</h5>
+            <p>Email: infoempresa.com</p>
+            <p>Teléfono: +123 456 7890</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Síguenos</h5>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="w-100 h-5 bg-primary">
-      <p>&copy; 2024 CHAMBITAS. Todos los derechos reservados.</p>
-      <ul class="social-media">
-        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-      </ul>
   </footer>
-
-  <script src="script.js"></script>
-</body>
+</div>

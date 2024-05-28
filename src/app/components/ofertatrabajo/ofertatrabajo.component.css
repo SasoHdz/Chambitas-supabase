@@ -1,61 +1,109 @@
-<<<<<<< HEAD
-=======
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border border-box;
-    text-decoration: none;
-    list-style: none;
-}
-
-body{
-    font-family: 'Poppins', sans-serif;
+.body-form {
+  background: linear-gradient(to right, #a7aeae, #a6caca);
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-
+  max-width: 700px;
+  width: 100%;
 }
 
-.menu{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.frida{
-    padding: 100px 0;
-    background-color: #E1E2E6;
-    position: relative;
-}
-.frida-content {
-    text-align: center;
-}
-.txt-p{
-    font-size: 16px;
-    color: #0b6135;
-    padding:-5 250px;
-    margin-bottom: 75px;
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #03312e;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.link a{
-    font-size: 16px;
-    color: #C5C5C5;
-    display: block;
-    margin-bottom: 15px;
-
+.form-wrapper:hover {
+  transform: scale(1.02);
+  background: rgba(255, 255, 255, 0.2);
 }
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .logo {
-    position: absolute;
-    top: 20px; /* Ajusta la posición vertical según sea necesario */
-    left: 20px; /* Ajusta la posición horizontal según sea necesario */
-    width: 100px; /* Ajusta el ancho según sea necesario */
-    height: auto; /* Ajusta la altura automáticamente */
-  }
->>>>>>> aad71c57b21741835f0384d512d1e1dcb7ac3679
+  max-width: 150px;
+}
+
+.form-control,
+.form-select {
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 0.5rem;
+  border: 2px solid #03312e;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #03312e;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #03312e;
+  box-shadow: 0 0 8px rgba(3, 49, 46, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+  background-color: #00b9ae;
+  border-color: #00b9ae;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #037171;
+  border-color: #037171;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #03312e;
+  border-color: #03312e;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #037171;
+  border-color: #037171;
+  transform: scale(1.05);
+}
+
+h2 {
+  color: #03312e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.invalid-feedback {
+  color: #e3342f;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #03312e;
+}
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #03312e;
+  border: 1px solid #00b9ae;
+}

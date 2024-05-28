@@ -1,129 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario de Registro</title>
-
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        background: linear-gradient(to right, #a7aeae, #a6caca);
-        color: #fff;
-        font-family: "Arial", sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      .container {
-        max-width: 700px;
-        width: 100%;
-      }
-
-      .form-wrapper {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        color: #03312e;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, background 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-      }
-
-      .form-wrapper:hover {
-        transform: scale(1.02);
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .logo {
-        max-width: 150px;
-      }
-
-      .form-control,
-      .form-select {
-        background: rgba(255, 255, 255, 0.15);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border-radius: 0.5rem;
-        border: 2px solid #03312e;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        color: #03312e;
-      }
-
-      .form-control:focus,
-      .form-select:focus {
-        border-color: #03312e;
-        box-shadow: 0 0 8px rgba(3, 49, 46, 0.2);
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      .btn-primary {
-        background-color: #00b9ae;
-        border-color: #00b9ae;
-        transition: background-color 0.3s ease, border-color 0.3s ease,
-          transform 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        background-color: #037171;
-        border-color: #037171;
-        transform: scale(1.05);
-      }
-
-      .btn-danger {
-        background-color: #03312e;
-        border-color: #03312e;
-        transition: background-color 0.3s ease, border-color 0.3s ease,
-          transform 0.3s ease;
-      }
-
-      .btn-danger:hover {
-        background-color: #037171;
-        border-color: #037171;
-        transform: scale(1.05);
-      }
-
-      h2 {
-        color: #03312e;
-        margin-bottom: 1.5rem;
-        text-align: center;
-      }
-
-      .invalid-feedback {
-        color: #e3342f;
-      }
-
-      .form-group label {
-        font-weight: bold;
-        color: #03312e;
-      }
-
-      .list-group-item {
-        background-color: rgba(255, 255, 255, 0.85);
-        color: #03312e;
-        border: 1px solid #00b9ae;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container my-5">
+<app-layout>
+  <div class="row body-form h-auto">
+    <div class="container my-5 ">
       <div class="form-wrapper p-5 mx-auto shadow rounded">
         <div class="logo-container text-center mb-4">
           <img src="logo.png" alt="Logo" class="logo" />
@@ -308,12 +185,12 @@
                   }"
                   (change)="onChangeOficio($event)"
                 >
-                  <option value="" disabled selected>
-                    Selecciona un oficio
-                  </option>
-                  <option value="oficio1">Oficio 1</option>
-                  <option value="oficio2">Oficio 2</option>
-                  <option value="oficio3">Oficio 3</option>
+                <option [ngValue]="0"  >
+                  Selecciona ....
+                </option>
+                <option *ngFor="let ofi of oficios" [ngValue]="ofi.id_oficio">
+                  {{ ofi.nombre }}
+                </option>
                 </select>
                 <div
                   class="invalid-feedback"
@@ -342,10 +219,5 @@
         </form>
       </div>
     </div>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  </div>
+</app-layout>
