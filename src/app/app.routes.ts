@@ -6,6 +6,7 @@ import { LoginComponent }  from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { OfertatrabajoComponent } from './components/ofertatrabajo/ofertatrabajo.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { ListadoOfertasComponent } from './components/listado-ofertas/listado-ofertas.component';
 
 export const routes: Routes = [
     {path:'', component:LoginComponent},
@@ -15,6 +16,8 @@ export const routes: Routes = [
     {path:'registro', component:RegistroComponent},
     {path:'oferta-trabajo', component:OfertatrabajoComponent},
     {path:'layout', component:LayoutComponent},
+    {path:'listado-oferta', component:ListadoOfertasComponent},
+
 
     {path:'', redirectTo:'', pathMatch:'full'}
 ];
