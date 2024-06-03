@@ -1,0 +1,101 @@
+body {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    margin: 1rem 0;
+    overflow-y: auto;
+}
+
+.user-listing {
+    list-style: none;
+    padding: 0;
+}
+
+.user-listing li {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-listing li:hover {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.user-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #34495e;
+}
+
+.rating i {
+    color: #FFD700; /* Color de las estrellas */
+    margin-right: 0.1rem;
+    transition: transform 0.3s ease;
+}
+
+.rating i:hover {
+    transform: scale(1.2);
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+}
+
+/* Responsivo */
+@media (max-width: 767px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .user-listing li {
+        padding: 1rem;
+    }
+
+    .user-name {
+        font-size: 1.25rem;
+    }
+
+    .user-description {
+        font-size: 0.9rem;
+    }
+}

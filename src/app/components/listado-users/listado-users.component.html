@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="listado-users.component.css" />
+
+<body>
+  <img src="logo.png" alt="Logo" class="logo" />
+
+  <div class="container">
+    <h1>Listado de Usuarios</h1>
+    <ul class="user-listing">
+      <li
+        onclick="redirectToService('Usuario 1', 'Carpintero', 'Realiza trabajos de carpintería fina, construcción de muebles y reparaciones generales.')"
+      >
+        <div class="user-name">Usuario 1</div>
+        <div class="user-description">
+          <strong>Oficio:</strong> Carpintero<br />
+          <strong>Descripción:</strong> Realiza trabajos de carpintería fina,
+          construcción de muebles y reparaciones generales.
+        </div>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </li>
+      <li
+        onclick="redirectToService('Usuario 2', 'Electricista', 'Instalación y reparación de sistemas eléctricos residenciales y comerciales.')"
+      >
+        <div class="user-name">Usuario 2</div>
+        <div class="user-description">
+          <strong>Oficio:</strong> Electricista<br />
+          <strong>Descripción:</strong> Instalación y reparación de sistemas
+          eléctricos residenciales y comerciales.
+        </div>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </li>
+      <li
+        onclick="redirectToService('Usuario 3', 'Plomero', 'Experto en reparación e instalación de sistemas de plomería, incluyendo tuberías y desagües.')"
+      >
+        <div class="user-name">Usuario 3</div>
+        <div class="user-description">
+          <strong>Oficio:</strong> Plomero<br />
+          <strong>Descripción:</strong> Experto en reparación e instalación de
+          sistemas de plomería, incluyendo tuberías y desagües.
+        </div>
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+      </li>
+      <!-- Más usuarios pueden ser añadidos aquí -->
+    </ul>
+  </div>
+
+  <script>
+    function redirectToService(userName, userJob, userDescription) {
+      const url = `contratar.html?user=${encodeURIComponent(
+        userName
+      )}&job=${encodeURIComponent(userJob)}&description=${encodeURIComponent(
+        userDescription
+      )}`;
+      window.location.href = url;
+    }
+  </script>
+</body>
